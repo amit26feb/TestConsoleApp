@@ -1,0 +1,15 @@
+<h1>Hello <i>{{title? title: 'Vector'}}</i></h1>
+<img src='{{imagePath}}' />
+<!--Interpolation - One way binding-->
+<img [src]='detailsImagePath' /><!-- property binding - one way binding -->
+<br />
+<button [disabled]='isDisabled'>Click Me</button>
+<br />
+<span [innerHtml]='pageHeader'></span>
+<br />
+<button [class]='classesToApply'>Classes 1 Button</button><br /><br />
+<button [class.pinkClass]='!!applyPinkClass'>Classes 2 button</button><br /><br />
+<button [ngClass]='addClasses()'>Classes 3 Button</button><br /><br />
+<button style='color: red;'>Classes 3 Button</button> <br /><br />
+<button [style.font-weight]="isBold ? 'bold': 'italics'" [style.font-size.px]="fontSize" (click)="changeBold()">Button Bold</button>
+<app-list-employee></app-list-employee>
