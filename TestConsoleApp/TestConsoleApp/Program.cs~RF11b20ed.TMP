@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Collections;
+using System.Threading.Tasks;
+
+namespace TestConsoleApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string, string> list = new List<string, string>();
+        }
+    }
+    class TestList
+    {
+        public string col1 { get; set; }
+        public string col2 { get; set; }
+    }
+}
