@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
+using System.Web;
 using System.Windows;
 using System.Xml.Linq;
 
@@ -55,6 +56,7 @@ namespace JsonUtil
                 btnEscape.IsEnabled = true;
                 btnvalidate.IsEnabled = true;
                 btnXML.IsEnabled = true;
+                btnHtmlDecode.IsEnabled = true;
             }
 
             if (string.IsNullOrEmpty(txtSource.Text) && string.IsNullOrEmpty(txtDestination.Text))
@@ -75,6 +77,14 @@ namespace JsonUtil
         private void BtnEscape_Click(object sender, RoutedEventArgs e)
         {
             txtDestination.Text = Regex.Escape(txtSource.Text);
+        }
+
+        private void BtnHtmlDecode_Click(object sender, RoutedEventArgs e)
+        {
+            txtDestination.Text = HttpUtility.UrlDecode(txtSource.Text);
+            txtDestination.Text = txtDestination.Text.Replace("&amp;", "&");
+            txtDestination.Text = txtDestination.Text.Replace("&lt;", "<");
+            txtDestination.Text = txtDestination.Text.Replace("&gt;", ">");
         }
     }
 }

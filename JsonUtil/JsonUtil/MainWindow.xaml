@@ -21,6 +21,7 @@
                     <Button x:Name="btnXML" Content="ToXML" HorizontalAlignment="Left" Margin="431,497,0,0" VerticalAlignment="Top" Width="117" Height="35" RenderTransformOrigin="1.656,0.577" Click="BtnXML_Click" IsEnabled="False"/>
                     <Button x:Name="btnvalidate" Content="Validate" HorizontalAlignment="Left" Margin="573,497,0,0" VerticalAlignment="Top" Width="117" Height="35" RenderTransformOrigin="1.656,0.577" IsEnabled="False"/>
                     <Button Name="btnSwap" Content="Swap" HorizontalAlignment="Left" Height="25" Margin="512,272,0,0" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.432,-2.568" Click="BtnSwap_Click" IsEnabled="False" />
+                    <Button x:Name="btnHtmlDecode" Content="HTML Decode" HorizontalAlignment="Left" Margin="718,497,0,0" VerticalAlignment="Top" Width="117" Height="35" RenderTransformOrigin="1.656,0.577" IsEnabled="False" Click="BtnHtmlDecode_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="XML">
