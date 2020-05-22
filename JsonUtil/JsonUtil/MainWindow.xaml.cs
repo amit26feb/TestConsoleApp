@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Windows;
@@ -19,7 +20,7 @@ namespace JsonUtil
 
         private void BtnBeautify_Click(object sender, RoutedEventArgs e)
         {
-            txtDestination.Text = JToken.Parse(txtSource.Text).ToString(Formatting.Indented);
+            txtDestination.Text = JToken.Parse(txtSource.Text).ToString(Newtonsoft.Json.Formatting.Indented);
         }
 
         private void BtnSwap_Click(object sender, RoutedEventArgs e)
@@ -81,10 +82,41 @@ namespace JsonUtil
 
         private void BtnHtmlDecode_Click(object sender, RoutedEventArgs e)
         {
-            txtDestination.Text = HttpUtility.UrlDecode(txtSource.Text);
-            txtDestination.Text = txtDestination.Text.Replace("&amp;", "&");
-            txtDestination.Text = txtDestination.Text.Replace("&lt;", "<");
-            txtDestination.Text = txtDestination.Text.Replace("&gt;", ">");
+            txtDestination.Text = HtmlDecode(txtSource.Text);
+        }
+
+        private string HtmlDecode(string txtSource)
+        {
+            string txtDestination = HttpUtility.UrlDecode(txtSource);
+            txtDestination = txtDestination.Replace("&amp;", "&");
+            txtDestination = txtDestination.Replace("&lt;", "<");
+            txtDestination = txtDestination.Replace("&gt;", ">");
+            return txtDestination;
+        }
+
+        private void BtnXMLSwap_Click(object sender, RoutedEventArgs e)
+        {
+            string tempText = txtXMLSource.Text;
+            txtXMLSource.Text = txtXMLDestination.Text;
+            txtXMLDestination.Text = tempText;
+        }
+
+        private void BtnXMLFormat_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string unformattedXml = txtXMLDestination.Text;
+                txtXMLDestination.Text = XElement.Parse(unformattedXml).ToString();
+            }
+            catch (Exception ex)
+            {
+                lblXmlError.Content = ex.Message;
+            }
+        }
+
+        private void BtnXMLHtmlDecode_Click(object sender, RoutedEventArgs e)
+        {
+            txtXMLDestination.Text = HtmlDecode(txtXMLSource.Text);
         }
     }
 }
