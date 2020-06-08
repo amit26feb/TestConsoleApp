@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 //using System.Windows.Media;
 
 namespace TestConsoleApp
@@ -8,6 +12,9 @@ namespace TestConsoleApp
         static void Main(string[] args)
         {
             Decimal.TryParse("56.09", out decimal d);
+            Rootobject a = JsonConvert.DeserializeObject<Rootobject>(File.ReadAllText(@"C:\Amit\Docs\Reng_B.json"));
+
+            List<Behaviorterm[]> i = a.data.behaviorQualifier.Select(x=>x.behaviorTerms).ToList();
 
             //string qty = Decimal.Truncate(d).ToString();
             //Console.WriteLine(qty);
@@ -31,23 +38,23 @@ namespace TestConsoleApp
             //var a = list.FirstOrDefault(x => !x.col2.Contains(x.col1));
             //var color = (Color)ColorConverter.ConvertFromString("Red");
 
-            TestList t = new TestList();
-            try
-            {
+            //TestList t = new TestList();
+            //try
+            //{
 
-            t.col1 = "'huh";
-             t.col1.AssignError("mera err");
-                Console.WriteLine(t.col1);
-                Console.WriteLine(t.col2);
-                throw new ArgumentNullException();
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("exception");
-                Console.WriteLine(t.col1);
-            }
-           
-            Console.WriteLine("nu");
+            //    t.col1 = "'huh";
+            //    t.col1.AssignError("mera err");
+            //    Console.WriteLine(t.col1);
+            //    Console.WriteLine(t.col2);
+            //    throw new ArgumentNullException();
+            //}
+            //catch (Exception)
+            //{
+            //    Console.WriteLine("exception");
+            //    Console.WriteLine(t.col1);
+            //}
+
+            Console.WriteLine(a);
 
             Console.ReadLine();
         }
@@ -63,13 +70,13 @@ namespace TestConsoleApp
         {
             if (!string.IsNullOrEmpty(field))
             {
-                field = string.Concat( field, "\n" , errorMessage);
-              
+                field = string.Concat(field, "\n", errorMessage);
+
             }
             else
             {
                 field = errorMessage;
-               
+
             }
         }
     }

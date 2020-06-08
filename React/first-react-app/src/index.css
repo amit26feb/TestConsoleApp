@@ -1,0 +1,31 @@
+body {
+  margin: 10px;
+  background-color: transparent;
+  min-height: 98vh;
+  min-width: 50vw;
+}
+
+.inner-body {
+  background-color: transparent;
+}
+
+.navbar {
+  height: 100px;
+  color: blue;
+  text-align: center;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./resources/Orange_Scales.svg");
+  margin-bottom: 5px;
+}
+
+.main-content {
+  text-align: left;
+  color: black;
+  font-size: 11px;
+  padding-top: 5px;
+  background-color: #fff1db;
+  min-height: 98vh;
+}
