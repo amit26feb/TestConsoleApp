@@ -11,10 +11,17 @@ namespace TestConsoleApp
     {
         static void Main(string[] args)
         {
-            Decimal.TryParse("56.09", out decimal d);
-            Rootobject a = JsonConvert.DeserializeObject<Rootobject>(File.ReadAllText(@"C:\Amit\Docs\Reng_B.json"));
+            decimal value = -144.64m;
+            Console.WriteLine("Your account balance is {0:C2}.", value);
+            //string a = File.ReadAllText(@"./BETA.Translations.json");
 
-            List<Behaviorterm[]> i = a.data.behaviorQualifier.Select(x=>x.behaviorTerms).ToList();
+            //var b = JsonConvert.DeserializeObject<Class1[]>(a);
+
+            //var c = b;
+            //Decimal.TryParse("56.09", out decimal d);
+            //Rootobject a = JsonConvert.DeserializeObject<Rootobject>(File.ReadAllText(@"C:\Amit\Docs\Reng_B.json"));
+
+            //List<Behaviorterm[]> i = a.data.behaviorQualifier.Select(x=>x.behaviorTerms).ToList();
 
             //string qty = Decimal.Truncate(d).ToString();
             //Console.WriteLine(qty);
@@ -54,7 +61,7 @@ namespace TestConsoleApp
             //    Console.WriteLine(t.col1);
             //}
 
-            Console.WriteLine(a);
+          //  Console.WriteLine(a);
 
             Console.ReadLine();
         }

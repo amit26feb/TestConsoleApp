@@ -1,13 +1,12 @@
 import React from "react"
+import ToDoItemm from "./ToDoItem"
 
-function ToDoList() {
+function ToDoList() {   
     return (
-        <div>
-            <ul>
-                <li><input type="checkbox" checked='true' /><p>Learn React Js </p></li>
-                <li><input type="checkbox" /><p>Learn DS in Details </p></li>
-                <li><input type="checkbox" /><p>Learn Language </p></li>
-            </ul>
+        <div className="todo-list">
+            <ToDoItemm />
+            <ToDoItemm />
+            <ToDoItemm />
         </div>
     )
 }
