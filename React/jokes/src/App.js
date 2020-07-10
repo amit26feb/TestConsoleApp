@@ -28,9 +28,17 @@ function App() {
     id: accumulator.id + currentValue.id
   }));
 
+  // let message =
+
   //mapping
   const jokesJson = top3Jokes.map(x => (
-    <AllJokes key={x.id} jokes={x} prod={productOfIds.id} />
+    <AllJokes
+      key={x.id}
+      jokes={x}
+      prod={productOfIds.id}
+      onPointerEnter={mouseEntered}
+      onPointerLeave={mouseLeave}
+    />
   ));
 
   return (
@@ -39,6 +47,14 @@ function App() {
       <div className="App">{jokesJson}</div>
     </div>
   );
+}
+
+function mouseEntered() {
+  console.log("Mouse Entered");
+}
+
+function mouseLeave() {
+  console.log("Mouse Left");
 }
 
 export default App;

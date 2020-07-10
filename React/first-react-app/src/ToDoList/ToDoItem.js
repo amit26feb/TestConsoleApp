@@ -1,12 +1,16 @@
-import React from 'react'
-
+import React from "react";
 
 function ToDoItem() {
-    return (<div className="todo-item">
-        <input type="checkbox" />
-        <p>Learn DS in Details </p>
+  return (
+    <div className="todo-item">
+      <input type="checkbox" onChange={checkChanged} />
+      <p>Learn DS in Details </p>
     </div>
-    )
+  );
 }
 
-export default ToDoItem
+function checkChanged() {
+  console.log("Checked");
+}
+
+export default ToDoItem;
