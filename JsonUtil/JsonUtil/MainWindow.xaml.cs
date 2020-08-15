@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Text.RegularExpressions;
+using System.Web;
 using System.Windows;
 using System.Xml.Linq;
 
@@ -18,7 +20,7 @@ namespace JsonUtil
 
         private void BtnBeautify_Click(object sender, RoutedEventArgs e)
         {
-            txtDestination.Text = JToken.Parse(txtSource.Text).ToString(Formatting.Indented);
+            txtDestination.Text = JToken.Parse(txtSource.Text).ToString(Newtonsoft.Json.Formatting.Indented);
         }
 
         private void BtnSwap_Click(object sender, RoutedEventArgs e)
@@ -55,6 +57,7 @@ namespace JsonUtil
                 btnEscape.IsEnabled = true;
                 btnvalidate.IsEnabled = true;
                 btnXML.IsEnabled = true;
+                btnHtmlDecode.IsEnabled = true;
             }
 
             if (string.IsNullOrEmpty(txtSource.Text) && string.IsNullOrEmpty(txtDestination.Text))
@@ -75,6 +78,45 @@ namespace JsonUtil
         private void BtnEscape_Click(object sender, RoutedEventArgs e)
         {
             txtDestination.Text = Regex.Escape(txtSource.Text);
+        }
+
+        private void BtnHtmlDecode_Click(object sender, RoutedEventArgs e)
+        {
+            txtDestination.Text = HtmlDecode(txtSource.Text);
+        }
+
+        private string HtmlDecode(string txtSource)
+        {
+            string txtDestination = HttpUtility.UrlDecode(txtSource);
+            txtDestination = txtDestination.Replace("&amp;", "&");
+            txtDestination = txtDestination.Replace("&lt;", "<");
+            txtDestination = txtDestination.Replace("&gt;", ">");
+            return txtDestination;
+        }
+
+        private void BtnXMLSwap_Click(object sender, RoutedEventArgs e)
+        {
+            string tempText = txtXMLSource.Text;
+            txtXMLSource.Text = txtXMLDestination.Text;
+            txtXMLDestination.Text = tempText;
+        }
+
+        private void BtnXMLFormat_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string unformattedXml = txtXMLDestination.Text;
+                txtXMLDestination.Text = XElement.Parse(unformattedXml).ToString();
+            }
+            catch (Exception ex)
+            {
+                lblXmlError.Content = ex.Message;
+            }
+        }
+
+        private void BtnXMLHtmlDecode_Click(object sender, RoutedEventArgs e)
+        {
+            txtXMLDestination.Text = HtmlDecode(txtXMLSource.Text);
         }
     }
 }
