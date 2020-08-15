@@ -6,6 +6,8 @@ function Main() {
   return (
     <div>
       <ToDoList className="main-content" />
+     
+     
       <div style={{ display: "flex" }}>
         <ContactCard
           contact={{

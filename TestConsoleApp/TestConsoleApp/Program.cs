@@ -1,8 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 //using System.Windows.Media;
 
 namespace TestConsoleApp
@@ -11,8 +8,18 @@ namespace TestConsoleApp
     {
         static void Main(string[] args)
         {
-            decimal value = -144.64m;
-            Console.WriteLine("Your account balance is {0:C2}.", value);
+            // GridColWidth();
+            dtoGen();
+            //decimal value = -144.64m;
+            //Console.WriteLine("Your account balance is {0:C2}.", value);
+
+            //DateTime chotaDt = DateTime.Now;
+            //DateTime badaDt = DateTime.Now.AddHours(1);
+
+            //Console.WriteLine(chotaDt.TimeOfDay.CompareTo(badaDt.TimeOfDay));
+            //Console.WriteLine(badaDt.Subtract(chotaDt));
+
+            //Console.WriteLine(string.Format("{0:pn}","20"));
             //string a = File.ReadAllText(@"./BETA.Translations.json");
 
             //var b = JsonConvert.DeserializeObject<Class1[]>(a);
@@ -61,9 +68,74 @@ namespace TestConsoleApp
             //    Console.WriteLine(t.col1);
             //}
 
-          //  Console.WriteLine(a);
+            //  Console.WriteLine(a);
 
             Console.ReadLine();
+        }
+
+        private static void dtoGen()
+        {
+            List<string> l = new List<string>() { "qty_ind",
+"offset_type",
+"offset_account",
+"broker_no",
+"apr_actionuser",
+"Apr_firstname",
+"apr_Lastname",
+"user_timestamp",
+
+};
+            foreach (string item in l)
+            {
+                Console.WriteLine("[HostField(\"" + item.ToUpper() + "\")]");
+                Console.WriteLine("[JsonProperty(PropertyName = \"" + item.ToLower() + "\")]");
+                Console.WriteLine("public string " + item.ToUpper() + " { get; set; }");
+
+               
+                Console.WriteLine();
+            }
+        }
+
+        private static void GridColWidth()
+        {
+            List<string> l = new List<string>() { "groupType",
+"addTimestamp",
+"adduserid",
+"firstName",
+"lastName",
+"queue",
+"addDepartment",
+"groupAid",
+"accountNumber",
+"accountType",
+"loc",
+"qtyInd",
+"quantity",
+"secno",
+"offsetAccountNumber",
+"offsetAccountType",
+"sourceCode",
+"brokerNumber",
+"status",
+"aprAction",
+"aprActionTime",
+"aprActionUser",
+"aprFirstName",
+"aprLastName",
+"aprActionNote",
+"finalPend",
+"userTimestamp"
+};
+            List<string> r = new List<string>();
+
+            foreach (string str in l)
+            {
+                r.Add(Char.ToUpperInvariant(str[0]) + str.Substring(1).Trim());
+            }
+            foreach (string str in r)
+            {
+                Console.WriteLine("\"" + str + "\"");
+            }
         }
     }
     class TestList

@@ -25,7 +25,7 @@ function App() {
 
   //reduce
   const productOfIds = top3Jokes.reduce((accumulator, currentValue) => ({
-    id: accumulator.id + currentValue.id
+    id: accumulator.id * currentValue.id
   }));
 
   // let message =
@@ -35,7 +35,7 @@ function App() {
     <AllJokes
       key={x.id}
       jokes={x}
-      prod={productOfIds.id}
+      productOfId={productOfIds.id}
       onPointerEnter={mouseEntered}
       onPointerLeave={mouseLeave}
     />
