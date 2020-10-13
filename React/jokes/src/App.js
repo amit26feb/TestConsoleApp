@@ -5,6 +5,11 @@ import { getData, setData, addJoke } from "./Util/Utils";
 
 function App() {
   localStorage.clear();
+  fetch(
+    "https://dev1-silverlight.thomsononeadvisor.com/modelrebalancetradingapi/api/v1/Entitlement/GetDisclosure?pageId=1"
+  )
+    .then(r => r.json())
+    .then(x => console.log(x));
 
   //Filter
   let top3Jokes;
