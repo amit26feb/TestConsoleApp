@@ -1,1 +1,43 @@
-<chapp-root></chapp-root>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Nuclear Test!</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <button (click)="onChange()">Click Me! </button>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-4">
+            <input type="text" placeholder="Enter text" (input)="onTextChange($event)" class="form-control" />
+        </div>
+        <div class="col-md-4">
+            <input type="text" placeholder="Magic" [(ngModel)]="message" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div *ngIf="isSuccess; else elseCondition">
+                <success-component>
+                </success-component>
+            </div>
+            {{message}}
+            <ng-template #elseCondition>
+                <div failure-component></div>
+            </ng-template>
+        </div>
+    </div>
+
+    <div>
+        <binding-element></binding-element>
+    </div>
+
+    <span>Directives Assignment</span>
+    <div>
+        <directives-component></directives-component>
+    </div>
+
+</div>

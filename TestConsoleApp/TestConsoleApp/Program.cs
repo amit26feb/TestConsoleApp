@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 //using System.Windows.Media;
 
 namespace TestConsoleApp
@@ -9,7 +10,13 @@ namespace TestConsoleApp
         static void Main(string[] args)
         {
             // GridColWidth();
-            dtoGen();
+            //dtoGen();
+            List<TestList> t1 = new List<TestList>();
+            t1.Add(new TestList { col1 = null, col2 = null });
+
+            IEnumerable<string> a = t1.Select(x => { if (!string.IsNullOrEmpty(x.col1))});
+
+            Console.WriteLine(a.FirstOrDefault());
             //decimal value = -144.64m;
             //Console.WriteLine("Your account balance is {0:C2}.", value);
 
@@ -91,7 +98,7 @@ namespace TestConsoleApp
                 Console.WriteLine("[JsonProperty(PropertyName = \"" + item.ToLower() + "\")]");
                 Console.WriteLine("public string " + item.ToUpper() + " { get; set; }");
 
-               
+
                 Console.WriteLine();
             }
         }

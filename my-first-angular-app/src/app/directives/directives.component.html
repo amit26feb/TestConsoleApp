@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-md-4">
+        <button class="btn btn-primary" (click)="showHideDetails()">Display Details</button>
+        <p *ngIf="displayParagraph">9th is IPL first match</p>
+    </div>
+</div>
+<div *ngIf="ids.length > 0">
+    <div *ngFor="let id of ids">
+        <div [ngStyle]="{'background-color':getBgColor(id)}" [ngClass]="id>=5? 'whiteText':''">
+            You clicked button on {{id}}
+        </div>
+    </div>
+</div>

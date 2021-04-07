@@ -1,0 +1,27 @@
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-8">
+            <input type="text" placeholder="Enter input" [(ngModel)]="username" class="form-control" (input)="getStatus()" />
+        </div>
+    </div>
+    <div *ngIf="username!=''" class="row">
+        <div class="col-md-8">
+            <p class="form-text text-muted" [ngStyle]="{color: getColor()}">
+                A new user {{username}} was created is now {{status}}.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <button (click)="onbuttonClick()" [disabled]="username==''?true:false" class="btn btn-primary"> Reset </button>
+        </div>
+        <div class="col-md-8">
+            <button (click)="onAddUser()" [disabled]="username==''?true:false" class="btn btn-primary"> Add User </button>
+        </div>
+    </div>
+    <div class="row" *ngFor="let user of userNames">
+        <div [class.greenDiv]="user.length >4" [class.redDiv]="user.length<=4">
+            {{user}}
+        </div>
+    </div>
+</div>
