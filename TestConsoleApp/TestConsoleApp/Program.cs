@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 //using System.Windows.Media;
@@ -9,14 +10,40 @@ namespace TestConsoleApp
     {
         static void Main(string[] args)
         {
+            Dept[] depts = new Dept[] { new Dept() { Name = "acct" } };
+            var schools = new[] {
+            new School(){ Students = new [] { new Student(){ Name="Bob", Dept = depts }, new Student(){ Name="Jack", Dept= depts } }},
+            new School(){ Students = new [] { new Student(){ Name="Jim", Dept= depts }, new Student(){ Name="John", Dept= depts } }}
+        };
+
+            var allStudents = schools.SelectMany(s => s.Students);
+
+            foreach (var student in allStudents)
+            {
+                Console.WriteLine(student.Name);
+            }
+
             // GridColWidth();
             //dtoGen();
-            List<TestList> t1 = new List<TestList>();
-            t1.Add(new TestList { col1 = null, col2 = null });
+            //List<TestList> t1 = new List<TestList>();
+            //t1.Add(new TestList { col1 = null, col2 = null });
 
-            IEnumerable<string> a = t1.Select(x => { if (!string.IsNullOrEmpty(x.col1))});
+            //IEnumerable<string> a = t1.Select(x => { if (!string.IsNullOrEmpty(x.col1))});
 
-            Console.WriteLine(a.FirstOrDefault());
+            //Console.WriteLine(a.FirstOrDefault());
+            Hashtable my_hashtable = new Hashtable();
+
+            // Adding key/value pair in the hashtable
+            // Using Add() method
+            //my_hashtable.Add("A1", "Welcome");
+            //my_hashtable.Add("A2", "to");
+            //my_hashtable.Add("A3", 3);
+
+            //foreach (DictionaryEntry element in my_hashtable)
+            //{
+            //    Console.WriteLine("Key:- {0} and Value:- {1} ",
+            //                       element.Key, element.Value);
+            //}
             //decimal value = -144.64m;
             //Console.WriteLine("Your account balance is {0:C2}.", value);
 
@@ -165,5 +192,21 @@ namespace TestConsoleApp
 
             }
         }
+    }
+
+    class School
+    {
+        public Student[] Students { get; set; }
+    }
+
+    class Student
+    {
+        public string Name { get; set; }
+        public Dept[] Dept { get; set; }
+    }
+
+    class Dept
+    {
+        public string Name { get; set; }
     }
 }
