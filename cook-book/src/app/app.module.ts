@@ -16,7 +16,7 @@ import { ShoppingEditComponent } from './shopping/shopping-edit/shopping-edit.co
   declarations: [
     AppComponent,
     HeaderComponent,
-    RecipeComponent,  
+    RecipeComponent,
     RecipeListComponent,
     RecipeItemComponent,
     RecipeDetailComponent,
@@ -28,4 +28,4 @@ import { ShoppingEditComponent } from './shopping/shopping-edit/shopping-edit.co
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

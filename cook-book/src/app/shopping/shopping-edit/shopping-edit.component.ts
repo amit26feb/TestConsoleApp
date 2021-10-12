@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shopping-edit.component.sass']
 })
 export class ShoppingEditComponent implements OnInit {
+  ingredients = [];
 
   constructor() { }
 
