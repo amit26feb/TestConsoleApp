@@ -16,8 +16,10 @@ namespace TestConsoleApp
             new School(){ Students = new [] { new Student(){ Name="Jim", Dept= depts }, new Student(){ Name="John", Dept= depts } }}
         };
 
-            var allStudents = schools.SelectMany(s => s.Students);
-
+            var allStudents = new List<School>(); //schools.SelectMany(s => s.Students);
+            Console.WriteLine("first or default");
+            var x = allStudents.FirstOrDefault();
+            Console.WriteLine(allStudents.FirstOrDefault());
             foreach (var student in allStudents)
             {
                 //Console.WriteLine(student.Name);
