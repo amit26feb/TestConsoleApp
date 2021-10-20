@@ -25,6 +25,19 @@ namespace TestConsoleApp
                 //Console.WriteLine(student.Name);
             }
 
+            MemoryCacher mem = new MemoryCacher();
+            Console.WriteLine( mem.Add("1", "1234"));
+            Console.WriteLine(mem.Add("2", "1fdssd234"));
+            Console.WriteLine(mem.Add("3", "123jjkjk4"));
+            Console.WriteLine(mem.Add("4", "hghkjkj1234"));
+
+            var b = mem.GetAllCachedItems();
+            while (b.MoveNext())
+            {
+                Console.WriteLine(b.Current.Key + " "+b.Current.Value);
+            }
+            
+
             // GridColWidth();
             //dtoGen();
             //List<TestList> t1 = new List<TestList>();
